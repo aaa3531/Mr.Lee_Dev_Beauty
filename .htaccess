@@ -1,0 +1,21 @@
+
+#### 그누보드5 rewrite BEGIN #####
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+RewriteRule ^shop/list-([0-9a-z]+)$  shop/list.php?ca_id=$1&rewrite=1  [QSA,L]
+RewriteRule ^shop/type-([0-9a-z]+)$  shop/listtype.php?type=$1&rewrite=1  [QSA,L]
+RewriteRule ^shop/([0-9a-zA-Z_\-]+)$  shop/item.php?it_id=$1&rewrite=1  [QSA,L]
+RewriteRule ^shop/([^/]+)/$  shop/item.php?it_seo_title=$1&rewrite=1  [QSA,L]
+RewriteRule ^content/([0-9a-zA-Z_]+)$  bbs/content.php?co_id=$1&rewrite=1  [QSA,L]
+RewriteRule ^content/([^/]+)/$  bbs/content.php?co_seo_title=$1&rewrite=1      [QSA,L]
+RewriteRule ^rss/([0-9a-zA-Z_]+)$  bbs/rss.php?bo_table=$1        [QSA,L]
+RewriteRule ^([0-9a-zA-Z_]+)$  bbs/board.php?bo_table=$1&rewrite=1      [QSA,L]
+RewriteRule ^([0-9a-zA-Z_]+)/([^/]+)/$ bbs/board.php?bo_table=$1&wr_seo_title=$2&rewrite=1      [QSA,L]
+RewriteRule ^([0-9a-zA-Z_]+)/write$  bbs/write.php?bo_table=$1&rewrite=1    [QSA,L]
+RewriteRule ^([0-9a-zA-Z_]+)/([0-9]+)$  bbs/board.php?bo_table=$1&wr_id=$2&rewrite=1  [QSA,L]
+</IfModule>
+#### 그누보드5 rewrite END #####
